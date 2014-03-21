@@ -19,7 +19,6 @@ def pingHost(ip_from_user):
     else:
         return True, m.group(0)
 
-
 def networkScan(initialHost, interval=500):
     if interval < 0:
         interval = 0
@@ -34,7 +33,6 @@ def networkScan(initialHost, interval=500):
             print ip + " is up!"
         else:
             print ip + " is down!"
-
 
 def portScanner(host, port, protocol):
     """
@@ -54,9 +52,7 @@ def portScanner(host, port, protocol):
         return result
 
 
-def bannerGrabbing(host, port, protocol):
-    header = portScanner(host, port, protocol)
-
+def bannerGrabbing(header, host, port):
     if header:
         try:
             #HTTP
@@ -99,16 +95,25 @@ def bannerGrabbing(host, port, protocol):
         print "[!] Error occured while grabbing the header"
 
 
-def scanAllPorts(host, protocol, interval=500):
-    for i in range(1, 65535, 1):
-        portScanner(host, protocol, i)
-        time.sleep(interval)
+def scanAllPorts(host, protocol, interval=500, bannerGrab=0):
+    if interval < 0:
+        interval = 0
+
+    for i in range(80, 65535, 1):
+        print "Attempting port No. %s:" % str(i)
+        header = portScanner(host, i, protocol)
+        if header is not None:
+            if bannerGrab == "1":
+                bannerGrabbing(header, host, i)
+            else:
+                print header
+        time.sleep(interval / 1000)
 
 
 def main(args):
     parser = OptionParser()
-    parser.add_option("--ip", dest="targethost", type="string", help="Enter target name or ip",
-                      metavar="www.exemple.com")
+    parser.add_option("--ip", dest="targetHost", type="string", help="Enter target name or ip",
+                      metavar="www.example.com")
     parser.add_option("-t", dest="interval", type="int", help="Time interval between each scan in milliseconds",
                       metavar="TIME_INTERVAL")
     parser.add_option("-p", dest="protocol", type="string", help="Returns the type of scan", metavar="[TCP/UDP/ICMP]")
@@ -118,9 +123,9 @@ def main(args):
                       metavar="[port-scan, net-map, ping]")
     (options, args) = parser.parse_args()
 
-    host = options.targethost
+    host = options.targetHost
 
-    if host == None or options.command == None:
+    if host is None or options.command is None:
         parser.print_help()
     else:
 
@@ -132,11 +137,11 @@ def main(args):
             networkScan(host)
         elif command == "port-scan":
             protocol = options.protocol
-            if protocol == None or protocol.lower() not in ["tcp", "udp", "icmp"]:
+            if protocol is None or protocol.lower() not in ["tcp", "udp", "icmp"]:
                 parser.print_help()
                 return
 
-            scanAllPorts(host, protocol)
+            scanAllPorts(host, protocol, options.interval, options.banner)
 
         elif command == "banner-grab":
             print ""
@@ -147,16 +152,16 @@ def main(args):
         #here we need to check what was asked of us
         #in the meantime we do network scan using ping
         #we assume ip is numeric already
-        success, ip = pingHost(options.targethost)
-        if success:
-            print "Initial server is up!"
-        else:
-            print "Initial server is down!"
-
-        print "Commence network scanning"
-
-        if ip != None:
-            networkScan(ip, 700)
+        #        success, ip = pingHost(options.targethost)
+        #       if success:
+        #          print "Initial server is up!"
+        #     else:
+        #        print "Initial server is down!"
+        #
+        #       print "Commence network scanning"
+        #
+        #       if ip is not None:
+        #          networkScan(ip, 700)
 
 
 if __name__ == "__main__":
