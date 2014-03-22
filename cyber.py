@@ -8,6 +8,11 @@ from optparse import OptionParser
 
 
 def pingHost(ip_from_user):
+    """
+This func gets an ip and pings it once, waiting only 100 ms for it to reply
+    @param ip_from_user:
+    @return: boolean success variable and the exact ip of the remote host.
+    """
     args = ["-n", 1, ip_from_user]
     ping = subprocess.Popen(["ping ", ip_from_user, "-n", "1", "-w", "100"], stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
@@ -20,6 +25,11 @@ def pingHost(ip_from_user):
         return True, m.group(0)
 
 def networkScan(initialHost, interval=500):
+    """
+This function scans the entire SubNet of a host, using the ping command
+    @param initialHost: The host whose SubNet we wish to scan
+    @param interval: The interval between each ping in ms(default val is 500 ms)
+    """
     if interval < 0:
         interval = 0
 
@@ -34,10 +44,14 @@ def networkScan(initialHost, interval=500):
         else:
             print ip + " is down!"
 
-def portScanner(host, port, protocol):
-    """
 
-    :rtype : header string
+def scanPort(host, port, protocol):
+    """
+This functions scans a single port of a single host using the specified protocol
+    :rtype : header string or error message
+    @param host: The  host to scan
+    @param port: The port to scan
+    @param protocol: The protocol to use
     """
     if protocol.upper() == 'TCP':
         tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -58,6 +72,13 @@ def portScanner(host, port, protocol):
 
 
 def bannerGrabbing(header, host, port):
+    """
+This function does a banner grab on an header obtained from a specified host on a specified port
+    @param header: The obtained header
+    @param host: The host
+    @param port: The port
+    @return: exception if unsuccessful
+    """
     if header:
         try:
             #HTTP
@@ -101,12 +122,19 @@ def bannerGrabbing(header, host, port):
 
 
 def scanAllPorts(host, protocol, interval=500, bannerGrab=0):
+    """
+This function scans all the ports of a specified host
+    @param host: The host to scan
+    @param protocol: The protocol to use whilst scanning
+    @param interval: The interval between each scan
+    @param bannerGrab: Banner grab required?[1/0]
+    """
     if interval < 0:
         interval = 0
 
     for i in range(80, 65535, 1):
         print "Attempting port No. %s:" % str(i)
-        header = portScanner(host, i, protocol)
+        header = scanPort(host, i, protocol)
         if header is not None:
             if bannerGrab == "1":
                 bannerGrabbing(header, host, i)
