@@ -41,14 +41,19 @@ def portScanner(host, port, protocol):
     """
     if protocol.upper() == 'TCP':
         tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        tcp.connect((host, port))
-        if not port == 80:
-            tcp.send("hello")
-        else:
-            tcp.send("GET / HTTP/1.0\r\n\r\n")
+        try:
+            tcp.connect((host, port))
+            if not port == 80:
+                tcp.send("hello")
+            else:
+                tcp.send("GET / HTTP/1.0\r\n\r\n")
 
-        result = tcp.recv(200)
-        tcp.close()
+            result = tcp.recv(200)
+        except Exception, e:
+            result = e
+        finally:
+            tcp.close()
+
         return result
 
 
