@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="370655e9-47c5-48f6-8a31-8eabc404da61" name="Default" comment="Checking">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/2.iml" afterPath="$PROJECT_DIR$/.idea/2.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cyber.py" afterPath="$PROJECT_DIR$/cyber.py" />
-    </list>
+    <list default="true" id="370655e9-47c5-48f6-8a31-8eabc404da61" name="Default" comment="Commenting" />
     <ignored path="2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +29,10 @@
       <file leaf-file-name="cyber.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cyber.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="33" selection-start="3395" selection-end="3395" vertical-scroll-proportion="-1.0065573" vertical-offset="1515" max-vertical-offset="2125">
+            <state line="30" column="80" selection-start="994" selection-end="994" vertical-scroll-proportion="0.78503186" vertical-offset="17" max-vertical-offset="3196">
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#584#910#0" expanded="false" />
-                <element signature="e#1476#3254#0" expanded="false" />
+                <element signature="e#4194#4819#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -308,7 +304,15 @@
       <created>1395434844604</created>
       <updated>1395434844604</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Testing">
+      <created>1395498732563</created>
+      <updated>1395498732563</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Commenting">
+      <created>1395499271167</created>
+      <updated>1395499271167</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -332,24 +336,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923076" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39936775" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32923076" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="133" y="710" width="1920" height="313" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13697916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39936775" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="133" y="710" width="1920" height="313" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -370,7 +374,9 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Checking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking" />
+    <MESSAGE value="Testing" />
+    <MESSAGE value="Commenting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commenting" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -388,8 +394,7 @@
         <state line="55" column="0" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="2805">
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#584#910#0" expanded="false" />
-            <element signature="e#1476#3254#0" expanded="false" />
+            <element signature="e#4194#4819#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -399,8 +404,7 @@
         <state line="53" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="2465">
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#584#910#0" expanded="false" />
-            <element signature="e#1476#3254#0" expanded="false" />
+            <element signature="e#4194#4819#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -417,11 +421,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cyber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="33" selection-start="3395" selection-end="3395" vertical-scroll-proportion="-1.0065573" vertical-offset="1515" max-vertical-offset="2125">
+        <state line="30" column="80" selection-start="994" selection-end="994" vertical-scroll-proportion="0.78503186" vertical-offset="17" max-vertical-offset="3196">
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#584#910#0" expanded="false" />
-            <element signature="e#1476#3254#0" expanded="false" />
+            <element signature="e#4194#4819#0" expanded="false" />
           </folding>
         </state>
       </provider>
