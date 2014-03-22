@@ -39,10 +39,12 @@ This function scans the entire SubNet of a host, using the ping command
         ipNumbers[3] = str(i)
         success, ip = pingHost(".".join(ipNumbers))
 
+        var = ip
         if success:
-            print ip + " is up!"
+            var = var + " is UP!"
         else:
-            print ip + " is down!"
+            var = var + " is DOWN!"
+        print(var)
 
 
 def scanPort(host, port, protocol):
@@ -60,14 +62,15 @@ This functions scans a single port of a single host using the specified protocol
             if not port == 80:
                 tcp.send("hello")
             else:
-                tcp.send("GET / HTTP/1.0\r\n\r\n")
+                tcp.send("GET / HTTP/1.0\r\n\r\n".encode())
 
             result = tcp.recv(200)
-        except Exception, e:
-            result = e
+            result = "Port " + str(port) + " is open!"
+        except Exception as e:
+            if e.args[3] == 10061:
+                result = "Port " + str(port) + " is closed"
         finally:
             tcp.close()
-
         return result
 
 
@@ -88,37 +91,37 @@ This function does a banner grab on an header obtained from a specified host on 
             if port == 80:
                 service_name = re.search(re.compile(r'^Server\:(.*)$', re.I | re.M), header)
                 source_code = re.search(re.compile(r'^X-Powered-By\:(.*)$', re.I | re.M), header)
-                print service_name.group(0)
-                print source_code.group(0)
+                print(service_name.group(0))
+                print(source_code.group(0))
                 if service_name.group(0):
-                    print 'I found HTTP'
+                    print('I found HTTP')
                     #Operation system banner
-                    print "  Banner:", service_name.group(0)[8:]
+                    print("  Banner:", service_name.group(0)[8:])
 
                 for service in Server_linux:
                     if service in service_name.group(0).lower():
-                        print " ", host, "is Linux"
+                        print(" ", host, "is Linux")
                     if 'iis' in service_name.group(0).lower():
-                        print " ", host, "is Windows"
+                        print(" ", host, "is Windows")
 
                     #Source code banner
                     for source in X_Powered_By:
                         if source_code.group(0):
-                            print " Source:", source_code.group(0)[14:]
+                            print(" Source:", source_code.group(0)[14:])
                             break
             elif port == 22:
                 service_name = re.search(re.compile('SSH', re.I | re.M), header)
-                print "I found: ", service_name.group(0)
+                print("I found: ", service_name.group(0))
             elif port == 21:
                 service_name = re.search(re.compile('FTP', re.I | re.M), header)
-                print "I found: ", service_name.group(0)
+                print("I found: ", service_name.group(0))
             elif port == 3306:
                 service_name = re.search(re.compile('MySQL', re.I | re.M), header)
-                print "I found: ", service_name.group(0)
-        except Exception, e:
+                print("I found: ", service_name.group(0))
+        except Exception as e:
             return e
     else:
-        print "[!] Error occured while grabbing the header"
+        print("[!] Error occured while grabbing the header")
 
 
 def scanAllPorts(host, protocol, interval=500, bannerGrab=0):
@@ -133,14 +136,31 @@ This function scans all the ports of a specified host
         interval = 0
 
     for i in range(80, 65535, 1):
-        print "Attempting port No. %s:" % str(i)
+        print("Attempting port No. %s:" % str(i))
         header = scanPort(host, i, protocol)
         if header is not None:
             if bannerGrab == "1":
                 bannerGrabbing(header, host, i)
             else:
-                print header
+                print(header)
         time.sleep(interval / 1000)
+
+
+def fullBannerGrabbing(host, protocol):
+    ports = {80, 22, 21, 3306}
+    for p in ports:
+        if protocol.upper() == 'TCP':
+            tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                tcp.connect((host, p))
+                if not p == 80:
+                    tcp.send("hello")
+                else:
+                    tcp.send("GET / HTTP/1.0\r\n\r\n".encode())
+                result = tcp.recv(200)
+                bannerGrabbing(result, host, p)
+            except Exception as e:
+                print(e)
 
 
 def main(args):
@@ -151,9 +171,8 @@ def main(args):
                       metavar="TIME_INTERVAL")
     parser.add_option("-p", dest="protocol", type="string", help="Returns the type of scan", metavar="[TCP/UDP/ICMP]")
     parser.add_option("--type", dest="scanType", help="The type of scan to execute [full,stealth,fin,ack]")
-    parser.add_option("-b", dest="banner", help="Set to 1 for Banner Grabbing", metavar="[0,1]")
     parser.add_option("--command", dest="command", help="What do you wish to execute",
-                      metavar="[port-scan, net-map, ping]")
+                      metavar="[port-scan, net-map, ping, banner-grab]")
     (options, args) = parser.parse_args()
 
     host = options.targetHost
@@ -175,9 +194,8 @@ def main(args):
                 return
 
             scanAllPorts(host, protocol, options.interval, options.banner)
-
         elif command == "banner-grab":
-            print ""
+            print("")
         else:
             parser.print_help()
             return
